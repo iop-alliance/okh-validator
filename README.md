@@ -1,6 +1,10 @@
-# OkhValidator
+# OKH Validator
 
-To start your Phoenix server:
+This is a manifest validator for the [Internet of Production Alliance's Open Know-How manifests](https://standards.internetofproduction.org/)
+
+It uses the Elixir Phoenix framework.
+
+To run locally:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
