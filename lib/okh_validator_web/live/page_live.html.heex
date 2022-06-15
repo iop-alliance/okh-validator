@@ -1,0 +1,28 @@
+<div class="mt-3">
+    <form phx-submit="validate-manifest">
+        <div class="input-group">
+            <input type="text" class="form-control" 
+                name="manifest_url" value={@manifest_url}
+                placeholder="Manifest URL"
+                autofocus autocomplete="off"
+                readonly={@loading} />
+            <button type="submit" class="btn btn-primary">
+                Validate
+            </button>
+        </div>
+    </form>
+    <div>
+        <div>
+            URL: <%= @url_validation.message %>
+        </div>
+        <div>
+            YAML Format: <%= @yaml_validation.message %>
+        </div>
+        <div>
+            Manifest content: <%= @manifest_raw_content %>
+        </div>
+        <div>
+            Manifest data: <%= html_escape(Jason.encode!(@manifest_data)) %>
+        </div>
+    </div>
+</div>

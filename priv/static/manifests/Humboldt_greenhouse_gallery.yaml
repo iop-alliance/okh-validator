@@ -1,0 +1,48 @@
+
+# Open know-how manifest 1.0
+# The content of this manifest file is licensed under a Creative Commons Attribution 4.0 International License. 
+# Licenses for modification and distribution of the hardware, documentation, source-code, etc are stated separately.
+
+# Manifest metadata
+date-created: 2007-02-05
+date-updated: 2022-05-02
+manifest-author:
+  name: OKH Bot
+  affiliation: Appropedia
+  email: support@appropedia.org
+documentation-language: en
+ 
+# Properties
+title: Humboldt greenhouse gallery
+description: "This page is a gallery for Humboldt greenhouses   === Sunset Two Story Greenhouse === Description: This two story greenhouse is attached to the south side of a two story house. The windows of the bottom story are glass while the walls of the top story are a slightly more crude white translucent tarpaulin material. The floor of the 2nd story/roof of the bottom story is a wood deck which allows heated air to pass up to the 2nd story. Since the top story is an add on, the bedroom windows open to the greenhouse. Justification: This idea of a greenhouse attached to the side of a house uses the sun's energy to not only heat the greenhouse itself, but also heat the house itself."
+keywords:
+  - Greenhouses
+  - Agriculture
+  - Solar
+  - Construction
+  - Sustainable farm energy alternatives
+  - Gardening
+  - Humboldt AT gallery
+  - Appropriate technology files
+project-link: https://www.appropedia.org/Humboldt_greenhouse_gallery
+contact:
+  name: 
+  social:
+  - platform: Appropedia
+    user-handle: User:Anonymous1
+image: https://www.appropedia.org/w/images/5/5c/The_greenhouse.jpeg
+version: 28
+variant-of:
+  name: Greenhouses
+  web: https://www.appropedia.org/Greenhouses
+
+# License
+license:
+  documentation: CC-BY-SA-4.0
+licensor:
+  name: . 
+  contact: https://www.appropedia.org/User:Anonymous1
+  documentation-home: https://www.appropedia.org/Humboldt_greenhouse_gallery
+
+# User-defined fields
+sustainable-development-goals: SDG02 Zero hunger
