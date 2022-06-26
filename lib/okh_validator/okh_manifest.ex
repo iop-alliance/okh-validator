@@ -92,7 +92,6 @@ defmodule OkhValidator.OkhManifest do
 
   defp validate_field_present(manifest_validation, field_validations, field) do
     %{^field => %{status: status}} = field_validations
-    IO.inspect(status, label: "status")
     case status do
       "ok" ->
         Map.merge(manifest_validation, %{field => %{status: "ok"}})
@@ -107,7 +106,6 @@ defmodule OkhValidator.OkhManifest do
     %{"project-link" => %{status: project_link_status}, "documentation-home" => %{status: documentation_home_status}} = field_validations
     project_link_or_documentation_home_status = project_link_or_documentation_home_status(project_link_status, documentation_home_status)
 
-    IO.inspect(project_link_or_documentation_home_status)
     case project_link_or_documentation_home_status["project-link-or-documentation-home"][:status] do
       "error" ->
         manifest_validation

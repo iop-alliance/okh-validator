@@ -2,16 +2,34 @@ defmodule OkhValidatorWeb.PageLive do
   use OkhValidatorWeb, :live_view
 
   alias OkhValidator.OkhManifest
+  # alias OkhValidator.Manifest
+
+  alias OkhValidatorWeb.ValidationHelpers.{
+                                            TextField,
+                                            Boolean,
+                                            Contact,
+                                            Contributors,
+                                            Derivative,
+                                            Image,
+                                            License,
+                                            LinkList,
+                                            ManifestAuthor,
+                                            Person,
+                                            Standards,
+                                            URL,
+                                            Variant
+                                          }
 
   @impl true
   def mount(_params, _session, socket) do
     socket =
       assign(socket,
         manifest_url: "",
-        url_validation: %{message: ""},
+        url_validation: %{status: "", message: ""},
         manifest_raw_content: "",
-        yaml_validation: %{message: "No YAML parsed"},
+        yaml_validation: %{status: "", message: "No YAML parsed"},
         manifest_data: %{},
+        validations: %{},
         loading: false
       )
     {:ok, socket}
@@ -26,6 +44,13 @@ defmodule OkhValidatorWeb.PageLive do
       case socket.assigns.url_validation.status do
         "ok" ->
           validate_yaml(socket)
+        _ -> {:noreply, socket}
+      end
+
+    {_, socket} =
+      case socket.assigns.yaml_validation.status do
+        "ok" ->
+          validate_manifest(socket)
         _ -> {:noreply, socket}
       end
 
@@ -87,7 +112,8 @@ defmodule OkhValidatorWeb.PageLive do
     end
   end
 
-  defp validate_manifest(manifest) do
-    OkhManifest.validate_manifest(manifest)
+  defp validate_manifest(socket) do
+    socket = assign(socket, validations: OkhManifest.validate_manifest(socket.assigns.manifest_data))
+    {:ok, socket}
   end
 end
