@@ -43,4 +43,4 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-import bootstrap from 'bootstrap' 
+import '../vendor/bootstrap/dist/js/bootstrap.bundle' 
