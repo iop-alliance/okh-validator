@@ -19,11 +19,11 @@ defmodule Validators.UrlValidator do
   defp check_url(maybe_url) do
     case HTTPoison.get(maybe_url) do
       {:ok, %HTTPoison.Response{status_code: 404}} ->
-        %{status: "error", message: "404 error: not found"}
+        %{status: "error", message: "404 error: URL not found", value: maybe_url}
       {:ok, %HTTPoison.Response{status_code: status_code}} ->
         %{status: "ok", value: maybe_url, http_status: status_code}
       {:error, %HTTPoison.Error{reason: reason}} ->
-        %{status: "error", message: reason}
+        %{status: "error", message: reason, value: maybe_url}
       end
   end
 end
