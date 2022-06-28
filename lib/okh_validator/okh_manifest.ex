@@ -84,7 +84,7 @@ defmodule OkhValidator.OkhManifest do
   end
 
   defp validate_required_fields(field_validations) do
-    %{status: "ok"}
+    %{"status" => "ok"}
     |> validate_field_present(field_validations, "title")
     |> validate_field_present(field_validations, "description")
     |> validate_project_link_or_documentation_home_present(field_validations)
@@ -96,9 +96,9 @@ defmodule OkhValidator.OkhManifest do
       "ok" ->
         Map.merge(manifest_validation, %{field => %{status: "ok"}})
       "not found" ->
-        Map.merge(manifest_validation, %{"status" => "error", field => %{status: "error", message: "manifest must have title"}})
+        Map.merge(manifest_validation, %{"status" => "error", field => %{status: "error", message: "manifest must have #{field}"}})
       "error" ->
-        Map.merge(manifest_validation, %{"status" => "error", field => %{status: "error", message: field_validations["title"]["status"]}})
+        Map.merge(manifest_validation, %{"status" => "error", field => %{status: "error", message: field_validations[field]["status"]}})
     end
   end
 
@@ -106,21 +106,21 @@ defmodule OkhValidator.OkhManifest do
     %{"project-link" => %{status: project_link_status}, "documentation-home" => %{status: documentation_home_status}} = field_validations
     project_link_or_documentation_home_status = project_link_or_documentation_home_status(project_link_status, documentation_home_status)
 
-    case project_link_or_documentation_home_status["project-link-or-documentation-home"][:status] do
+    case project_link_or_documentation_home_status["project-link-or-documentation-home"]["status"] do
       "error" ->
         manifest_validation
         |> Map.merge(project_link_or_documentation_home_status)
-        |> Map.merge(%{status: "error"})
+        |> Map.merge(%{"status" => "error"})
       _ ->
         manifest_validation |> Map.merge(project_link_or_documentation_home_status)
     end
   end
 
-  defp project_link_or_documentation_home_status("ok", _), do: %{"project-link-or-documentation-home" => %{status: "ok"}}
-  defp project_link_or_documentation_home_status(_, "ok"), do: %{"project-link-or-documentation-home" => %{status: "ok"}}
+  defp project_link_or_documentation_home_status("ok", _), do: %{"project-link-or-documentation-home" => %{"status" => "ok"}}
+  defp project_link_or_documentation_home_status(_, "ok"), do: %{"project-link-or-documentation-home" => %{"status" => "ok"}}
   defp project_link_or_documentation_home_status(_, _) do
     %{"project-link-or-documentation-home" => %{
-      status: "error",
+      "status" =>  "error",
       message: "Neither project-link nor documentation-home are found and valid in the manifest. At least one of them must be present and valid"
     }}
   end
