@@ -11,7 +11,7 @@ defmodule Validators.LinkListValidator do
         Map.merge(validations, %{field => %{status: "not found"}})
       _ ->
         %{^field => value} = fields
-        Map.merge(validations, %{field => value})
+        Map.merge(validations, %{field => %{status: "ok", value: value}})
     end
   end
 end
