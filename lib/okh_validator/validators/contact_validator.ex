@@ -8,10 +8,10 @@ defmodule Validators.ContactValidator do
   def validate_contact(validations, fields) do
     case Map.get(fields, "contact") do
       nil ->
-        Map.merge(validations, %{contact: %{status: "not found"}})
+        Map.merge(validations, %{"contact" => %{status: "not found"}})
       _ ->
         %{"contact" => field} = fields
-        Map.merge(validations, %{contact: %{status: "ok", value: field}})
+        Map.merge(validations, %{"contact" => %{status: "ok", value: field}})
 
         # manifest_author_validations =
         #   validations.manifest_author
