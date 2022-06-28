@@ -18,12 +18,12 @@ defmodule OkhValidatorWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
-    live "/manifests_v1", Manifest_v1Live.Index, :index
-    live "/manifests_v1/new", Manifest_v1Live.Index, :new
-    live "/manifests_v1/:id/edit", Manifest_v1Live.Index, :edit
+    # live "/manifests_v1", Manifest_v1Live.Index, :index
+    # live "/manifests_v1/new", Manifest_v1Live.Index, :new
+    # live "/manifests_v1/:id/edit", Manifest_v1Live.Index, :edit
 
-    live "/manifests_v1/:id", Manifest_v1Live.Show, :show
-    live "/manifests_v1/:id/show/edit", Manifest_v1Live.Show, :edit
+    # live "/manifests_v1/:id", Manifest_v1Live.Show, :show
+    # live "/manifests_v1/:id/show/edit", Manifest_v1Live.Show, :edit
   end
 
   # Other scopes may use custom stacks.
