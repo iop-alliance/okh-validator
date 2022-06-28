@@ -4,17 +4,17 @@ defmodule OkhValidatorWeb.ValidationHelpers.Contact do
   alias OkhValidatorWeb.ValidationHelpers.TextField
 
   def show_validation_result(validatons) do
-    show_contact_status(validatons.field_validations[:contact])
+    show_contact_status(validatons.field_validations["contact"])
   end
 
-  defp show_contact_status(%{status: "ok"} = contact), do: check_contact_validations(contact.validations)
+  defp show_contact_status(%{status: "ok"} = contact), do: check_contact_validations(contact)
   defp show_contact_status(%{status: status}), do: status
 
   defp check_contact_validations(%{status: "ok"} = contact_validations) do
     raw(
-      "<ul><li>Name: #{TextField.show_validation_result(contact_validations.validations.name)}</li>" <>
-      "<li>Email: #{TextField.show_validation_result(contact_validations.validations.email)}</li>" <>
-      "<li>Affiliation: #{TextField.show_validation_result(contact_validations.validations.affiliation)}</li></ul>"
+      "<ul><li>Name: #{contact_validations.value["name"]}</li>" <>
+      "<li>Email: #{contact_validations.value["email"]}</li>" <>
+      "<li>Affiliation: #{contact_validations.value["affiliation"]}</li></ul>"
     )
   end
   defp check_contact_validations(%{status: "error"} = contact_validations) do

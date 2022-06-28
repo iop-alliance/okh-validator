@@ -1,143 +1,41 @@
 <div class="mt-4">
-    <h3>Validate Open Know-How Manifest</h3>
-    <form phx-submit="validate-manifest" class="mt-4">
-        <div class="input-group">
-            <input type="text" class="form-control" 
-                name="manifest_url" value={@manifest_url}
-                placeholder="Manifest URL"
-                autofocus autocomplete="off"
-                readonly={@loading} />
-            <button type="submit" class="btn btn-primary">
-                Validate
-            </button>
-        </div>
-    </form>
+    <h3>Open Know-How Manifest Validator</h3>
+    <p>
+        This tool validates the contents of an <a href="https://iop.link/okh" target="_blank">Open Know-How</a> manifest.
+    </p>
+    <div class="mt-4">
+        <p>Enter the URL of the manifest to be validated:</p>
+        <form phx-submit="validate-manifest">
+            <div class="input-group">
+                <input type="text" class="form-control" 
+                    name="manifest_url" value={@manifest_url}
+                    placeholder="Manifest URL"
+                    autofocus autocomplete="off"
+                    readonly={@loading} />
+                <button type="submit" class="btn btn-primary">
+                    Validate
+                </button>
+            </div>
+        </form>
+    </div>
     <div>
         <%= if @url_validation.status != "ok" do %>
             <div class="py-3">
                 <%= @url_validation.message %>
             </div>
         <% else %>
-            <div class="py-3">
-                <h3>Validation results</h3>
-                <dl>
-                    <dt>YAML Format</dt>
-                    <dd><%= @yaml_validation.message %></dd>
-                    
-                    <dt>Date Created</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["date-created"]) %></dd>
-                    
-                    <dt>Date Updated</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["date-updated"]) %></dd>
-                    
-                    <dt>Manifest Author</dt>
-                    <dd><%= ManifestAuthor.show_validation_result(@validations) %></dd>
-                    
-                    <dt>Title</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["title"]) %></dd>
-                    
-                    <dt>Description</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["description"]) %></dd>
-                    
-                    <dt>Intended Use</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["intended-use"]) %></dd>
-                    
-                    <!-- TODO: create keyword validator display function -->
-                    <dt>Keywords</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["keywords"]) %></dd>
+            <%= if @yaml_validation.status != "ok" do %>
+                <dt>YAML Format</dt>
+                <dd><%= @yaml_validation.message %></dd>
+            <% else %>
+                <div class="py-3">
+                    <%= live_component OkhValidatorWeb.Live.ManifestValidationComponent, validations: @validations %>               
+                </div>
 
-                    <dt>Project Homepage</dt>
-                    <dd><%= URL.show_validation_result(@validations.field_validations["project-link"]) %></dd>
-
-                    <dt>Health and Safety Notice</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["health-safety-notice"]) %></dd>                    
-
-                    <dt>Contact</dt>
-                    <dd><%= Contact.show_validation_result(@validations) %></dd>                    
-
-                    <dt>Contributors</dt>
-                    <dd><%= Contributors.show_validation_result(@validations) %></dd>                    
-
-                    <dt>Image</dt>
-                    <dd><%= Image.show_validation_result(@validations.field_validations["image"]) %></dd>              
-
-                    <dt>Thing Version</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["version"]) %></dd>          
-
-                    <dt>Stage of development</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["development-stage"]) %></dd>
-
-                    <dt>Has Been Made?</dt>
-                    <dd><%= Boolean.show_validation_result(@validations.field_validations["made"]) %></dd>
-
-                    <dt>Has Been Made Independently?</dt>
-                    <dd><%= Boolean.show_validation_result(@validations.field_validations["made-independently"]) %></dd>
-
-                    <dt>Standards Used</dt>
-                    <dd><%= Standards.show_validation_result(@validations) %></dd>
-
-                    <dt>Derivative Of</dt>
-                    <dd><%= Derivative.show_validation_result(@validations) %></dd>
-
-                    <dt>Variant Of</dt>
-                    <dd><%= Variant.show_validation_result(@validations) %></dd>
-
-                    <dt>Licenses</dt>
-                    <dd><%= License.show_validation_result(@validations) %></dd>
-                    
-                    <dt>Licensor</dt>
-                    <dd><%= Person.show_validation_result(@validations.field_validations["licensor"]) %></dd>
-
-                    <dt>Documentation Home</dt>
-                    <dd><%= URL.show_validation_result(@validations.field_validations["documentation-home"]) %></dd>
-
-                    <dt>Documentation Archive</dt>
-                    <dd><%= URL.show_validation_result(@validations.field_validations["archive-download"]) %></dd>
-
-                    <dt>Design Files</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["design-files"]) %></dd>
-
-                    <dt>Schematics</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["schematics"]) %></dd>
-
-                    <dt>Bill of Materials</dt>
-                    <dd><%= URL.show_validation_result(@validations.field_validations["bom"]) %></dd>
-
-                    <dt>List of Tools</dt>
-                    <dd><%= URL.show_validation_result(@validations.field_validations["tool-list"]) %></dd>
-
-                    <dt>Making Instructions</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["making-instructions"]) %></dd>
-
-                    <dt>Manufacturing Files</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["manufacturing-files"]) %></dd>
-
-                    <dt>Tool Settings</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["tool-settings"]) %></dd>
-
-                    <dt>Quality Control Instructions</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["quality-instructions"]) %></dd>
-
-                    <dt>Operating Instructions</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["operating-instructions"]) %></dd>
-
-                    <dt>Maintenance Instructions</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["maintenance-instructions"]) %></dd>
-
-                    <dt>Disposal Instructions</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["disposal-instructions"]) %></dd>
-
-                    <dt>Software</dt>
-                    <dd><%= LinkList.show_validation_result(@validations.field_validations["software"]) %></dd>
-
-                    <dt>Manifest Language</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["manifest_language"]) %></dd>
-
-                    <dt>Documentation Language</dt>
-                    <dd><%= TextField.show_validation_result(@validations.field_validations["documentation_language"]) %></dd>
-                </dl>
-                
-            </div>
+                <div class="py-3">
+                    <%= live_component OkhValidatorWeb.Live.FieldValidationsComponent, validations: @validations %>               
+                </div>
+            <% end %>
             <div>
                 <h3>Manifest content</h3>
                 <pre class="border bg-light p-3">

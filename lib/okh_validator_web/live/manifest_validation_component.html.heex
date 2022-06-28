@@ -1,0 +1,29 @@
+<h3>Manifest Validation</h3>
+<%= if @validations.manifest_validation["status"] == "ok" do %>
+  Manifest is valid
+<% else %>
+  <span class="text-danger">The manifest is not valid</span>
+<% end %>
+
+<h4 class="mt-4">Required fields:</h4>
+<p>Title:
+  <%= if @validations.manifest_validation["title"].status == "ok" do %>
+    <%= @validations.field_validations["title"].value %>
+  <% else %>
+    <span class="text-danger"><%= @validations.manifest_validation["title"].message %></span>
+  <% end %>
+</p>
+<p>Description:
+  <%= if @validations.manifest_validation["description"].status == "ok" do %>
+    <%= @validations.field_validations["description"].value %>
+  <% else %>
+    <span class="text-danger"><%= @validations.manifest_validation["description"].message %></span>
+  <% end %>
+</p>
+<p>Project Link or Documentation Home:
+  <%= if @validations.manifest_validation["project-link-or-documentation-home"]["status"] == "ok" do %>
+    Valid
+  <% else %>
+    <span class="text-danger"><%= @validations.manifest_validation["project-link-or-documentation-home"].message %></span>
+  <% end %>
+</p>

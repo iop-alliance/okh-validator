@@ -1,0 +1,152 @@
+<h3>Validation results</h3>
+<ul class="list-group">
+  <li class="list-group-item">
+    <div class="fw-bold">Date Created</div>
+    <%= TextField.show_validation_result(@validations.field_validations["date-created"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Date Updated</div>
+    <%= TextField.show_validation_result(@validations.field_validations["date-updated"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Manifest Author</div>
+    <%= ManifestAuthor.show_validation_result(@validations) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Title</div>
+    <%= TextField.show_validation_result(@validations.field_validations["title"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Description</div>
+    <%= TextField.show_validation_result(@validations.field_validations["description"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Intended Use</div>
+    <%= TextField.show_validation_result(@validations.field_validations["intended-use"]) %>
+  </li>
+  <li class="list-group-item">
+    <!-- TODO: create keyword validator display function -->
+    <div class="fw-bold">Keywords</div>
+    <%= TextField.show_validation_result(@validations.field_validations["keywords"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Project Homepage</div>
+    <%= URL.show_validation_result(@validations.field_validations["project-link"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Health and Safety Notice</div>
+    <%= TextField.show_validation_result(@validations.field_validations["health-safety-notice"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Contact</div>
+    <%= Contact.show_validation_result(@validations) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Contributors</div>
+    <%= Contributors.show_validation_result(@validations) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Image</div>
+    <%= Image.show_validation_result(@validations.field_validations["image"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Thing Version</div>
+    <%= TextField.show_validation_result(@validations.field_validations["version"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Stage of development</div>
+    <%= TextField.show_validation_result(@validations.field_validations["development-stage"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Has Been Made?</div>
+    <%= Boolean.show_validation_result(@validations.field_validations["made"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Has Been Made Independently?</div>
+    <%= Boolean.show_validation_result(@validations.field_validations["made-independently"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Standards Used</div>
+    <%= Standards.show_validation_result(@validations) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Derivative Of</div>
+    <%= Derivative.show_validation_result(@validations) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Variant Of</div>
+    <%= Variant.show_validation_result(@validations) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Licenses</div>
+    <%= License.show_validation_result(@validations) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Licensor</div>
+    <%= Person.show_validation_result(@validations.field_validations["licensor"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Documentation Home</div>
+    <%= URL.show_validation_result(@validations.field_validations["documentation-home"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Documentation Archive</div>
+    <%= URL.show_validation_result(@validations.field_validations["archive-download"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Design Files</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["design-files"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Schematics</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["schematics"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Bill of Materials</div>
+    <%= URL.show_validation_result(@validations.field_validations["bom"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">List of Tools</div>
+    <%= URL.show_validation_result(@validations.field_validations["tool-list"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Making Instructions</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["making-instructions"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Manufacturing Files</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["manufacturing-files"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Tool Settings</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["tool-settings"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Quality Control Instructions</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["quality-instructions"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Operating Instructions</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["operating-instructions"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Maintenance Instructions</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["maintenance-instructions"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Disposal Instructions</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["disposal-instructions"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Software</div>
+    <%= LinkList.show_validation_result(@validations.field_validations["software"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Manifest Language</div>
+    <%= TextField.show_validation_result(@validations.field_validations["manifest_language"]) %>
+  </li>
+  <li class="list-group-item">
+    <div class="fw-bold">Documentation Language</div>
+    <%= TextField.show_validation_result(@validations.field_validations["documentation_language"]) %>
+  </li>
+</ul>

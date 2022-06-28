@@ -4,22 +4,6 @@ defmodule OkhValidatorWeb.PageLive do
   alias OkhValidator.OkhManifest
   # alias OkhValidator.Manifest
 
-  alias OkhValidatorWeb.ValidationHelpers.{
-                                            TextField,
-                                            Boolean,
-                                            Contact,
-                                            Contributors,
-                                            Derivative,
-                                            Image,
-                                            License,
-                                            LinkList,
-                                            ManifestAuthor,
-                                            Person,
-                                            Standards,
-                                            URL,
-                                            Variant
-                                          }
-
   @impl true
   def mount(_params, _session, socket) do
     socket =
@@ -54,6 +38,7 @@ defmodule OkhValidatorWeb.PageLive do
         _ -> {:noreply, socket}
       end
 
+    IO.inspect(socket.assigns.validations)
     socket = assign(socket,
       manifest_url: manifest_url
     )
