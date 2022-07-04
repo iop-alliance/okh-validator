@@ -103,7 +103,7 @@ defmodule OkhValidatorWeb.PageLive do
 
   end
 
-  def get_manifest(manifest_url) do
+  defp get_manifest(manifest_url) do
     case HTTPoison.get(manifest_url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         {:ok, body}
