@@ -87,6 +87,7 @@ defmodule OkhValidator.OkhManifest do
     %{"status" => "ok"}
     |> validate_field_present(field_validations, "title")
     |> validate_field_present(field_validations, "description")
+    |> validate_field_present(field_validations, "license")
     |> validate_project_link_or_documentation_home_present(field_validations)
   end
 

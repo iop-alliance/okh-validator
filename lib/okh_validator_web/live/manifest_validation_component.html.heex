@@ -27,3 +27,10 @@
     <span class="text-danger"><%= @validations.manifest_validation["project-link-or-documentation-home"].message %></span>
   <% end %>
 </p>
+<p>License:
+  <%= if @validations.manifest_validation["license"].status == "ok" do %>
+        <%= Jason.encode!(@validations.field_validations["license"].value) %>
+  <% else %>
+    <span class="text-danger"><%= @validations.manifest_validation["license"].message %></span>
+  <% end %>
+</p>
