@@ -10,7 +10,7 @@
                 <input type="text" class="form-control" 
                     name="manifest_url" value={@manifest_url}
                     placeholder="Manifest URL"
-                    autofocus autocomplete="off"
+                    autofocus autocomplete="on"
                     readonly={@loading} />
                 <button type="submit" class="btn btn-primary">
                     Validate
@@ -36,13 +36,34 @@
                     <%= live_component OkhValidatorWeb.Live.FieldValidationsComponent, validations: @validations %>               
                 </div>
             <% end %>
-            <div>
-                <h3>Manifest content</h3>
-                <pre class="border bg-light p-3">
-                    <code>
-                        <%= html_escape(@manifest_raw_content) %>
-                    </code>
-                </pre>
+            <div class="mt-4">
+                <p>
+                    You can validate this manifest via the API using the following endpoint:
+                </p>
+                <p>
+                    <%= content_tag(:a, "https://okh-v1-validator.fly.dev/api/validate?manifest=#{@manifest_url}", href: "/api/validate?manifest=#{@manifest_url}") %>
+                </p>
+            </div>
+            <div class="mt-4 mb-5">
+                <div class="accordion accordion" id="manifestContent">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Manifest content
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#manifestContent">
+                            <div class="accordion-body">
+                                <pre class="border bg-light p-3">
+                                    <code class="language-yaml">
+                                        <%= html_escape(@manifest_raw_content) %>
+                                    </code>
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3></h3>
             </div>
         <% end %>
     </div>
