@@ -2,25 +2,24 @@ defmodule OkhValidatorWeb.PageLive do
   use OkhValidatorWeb, :live_view
 
   alias OkhValidator.OkhManifest
+  alias OkhValidator.Converters.Oshwa
   # alias OkhValidator.Manifest
 
   @impl true
   def mount(_params, _session, socket) do
     socket =
-      assign(socket,
-        manifest_url: "",
-        url_validation: %{status: "", message: ""},
-        manifest_raw_content: "",
-        yaml_validation: %{status: "", message: "No YAML parsed"},
-        manifest_data: %{},
-        validations: %{},
-        loading: false
-      )
+      socket
+      |> initialise_results
+      |> assign(
+          manifest_url: "",
+          loading: false
+        )
     {:ok, socket}
   end
 
   @impl true
   def handle_event("validate-manifest", %{"manifest_url" => manifest_url}, socket) do
+    initialise_results(socket)
 
     {_, socket} = validate_url(manifest_url, socket)
 
@@ -44,6 +43,24 @@ defmodule OkhValidatorWeb.PageLive do
     )
 
     {:noreply, socket}
+  end
+
+  @impl true
+  def handle_event("convert-to-oshwa", _, socket) do
+    {:ok, oshwa_project} = Oshwa.convert_okh_to_oshwa(socket.assigns.manifest_data)
+    socket = assign(socket, oshwa_project: oshwa_project)
+    {:noreply, socket}
+  end
+
+  defp initialise_results(socket) do
+    assign(socket, %{
+      url_validation: %{status: "", message: ""},
+      manifest_raw_content: "",
+      yaml_validation: %{status: "", message: "No YAML parsed"},
+      manifest_data: %{},
+      validations: %{},
+      oshwa_project: %{}
+    })
   end
 
   defp validate_url(url, socket) do
