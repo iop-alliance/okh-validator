@@ -7,6 +7,7 @@ defmodule OkhValidator.OkhManifest do
     DateValidator,
     ManifestAuthorValidator,
     LanguageValidator,
+    LicenseValidator,
     LinkListValidator,
     PersonValidator,
     TextValidator,
@@ -30,9 +31,9 @@ defmodule OkhValidator.OkhManifest do
           "development-stage",
           "derivative-of", # TODO: use project validator (https://standards.internetofproduction.org/pub/okh#derivative-of)
           "variant-of", # TODO: use project validator (https://standards.internetofproduction.org/pub/okh#derivative-of)
-          "sub", # TODO: use project validator (https://standards.internetofproduction.org/pub/okh#derivative-of)
-          "license" # TODO: use license validator (https://standards.internetofproduction.org/pub/okh#license)
+          "sub" # TODO: use project validator (https://standards.internetofproduction.org/pub/okh#derivative-of)
         ])
+      |> LicenseValidator.validate_license(manifest_fields)
       |> ArrayValidator.validate_array_field(manifest_fields, [
           "keywords",
           "standards-used" # TODO: create standards validator
