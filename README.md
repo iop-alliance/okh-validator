@@ -1,6 +1,8 @@
-# OKH Validator
+# OKH Validator For Makers
 
 This is a manifest validator for the [Internet of Production Alliance's Open Know-How manifests](https://standards.internetofproduction.org/).
+
+An overview of the project and details of the validation process is described in the [overview document](./docs/overview.md).
 
 ## Web-based validator
 
