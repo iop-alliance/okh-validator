@@ -112,25 +112,25 @@ This section describes the validation criteria for the field types and schemas l
 
 ### String field
 
-Validation: All string fields will be encoded as utf-8 characters
+**Validation:** All string fields will be encoded as utf-8 characters
 
 ### Date field
 
-Validation: date fields will use ISO 8601 complete date format (YYYY-MM-DD)
+**Validation:** date fields will use ISO 8601 complete date format (YYYY-MM-DD)
 
 ### Email field
 
-Validation: format of an email address is local-part@domain
+**Validation:** format of an email address is local-part@domain
 
 ### URL field
 
 Some of the fields listed as URLs in Table 1 are detailed in the Open Know-How specifications as being valid if they are either a relative or an absolute path. For relative paths, the standard's specifications are such that "relative paths shall be relative to the location of the Open Know-How Manifest in the documentation repository". This was written assuming that the file is accessed by a crawler. If the manifest is to be used as a basis for portability, then it should be serve as a stand-alone shareable content object reference model to retrieve all files related to a specific project. As such, relative paths are not useful in this context so the validator does not currently check for them, only absolute URLs.
 
-Validation: URL fields will be valid URLs that return an HTTP status 200.
+**Validation:** URL fields will be valid URLs that return an HTTP status 200.
 
 ### Language field
 
-Validation: a field of type language must be a string in a format that complies with the ISO 639 language cods or the ISO 3166 country code as per BCP 47.
+**Validation:** a field of type language must be a string in a format that complies with the ISO 639 language cods or the ISO 3166 country code as per BCP 47.
 
 ### Person field
 
@@ -170,7 +170,7 @@ _Table 4: field types for the Platform schema_
 
 ### Boolean field
 
-Validation: Boolean value of true or false
+**Validation:** Boolean value of true or false
 
 ### Standard field
 A field with the Standard schema can contain the following fields:
