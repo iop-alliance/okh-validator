@@ -1,5 +1,5 @@
 defmodule Validators.UrlValidator do
-  alias ValidationHelpers
+  alias V1ValidationHelpers
 
   def validate_url(validations, fields, field_list) when is_list(field_list) do
     validations_list = Enum.map(field_list, &(validate_url(validations, fields, &1)))

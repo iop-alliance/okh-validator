@@ -1,4 +1,4 @@
-defmodule OkhValidatorWeb.ValidationHelpers.Person do
+defmodule OkhValidatorWeb.V1ValidationHelpers.Person do
   use Phoenix.HTML
 
   def show_validation_result(field) do

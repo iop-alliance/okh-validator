@@ -18,7 +18,7 @@ defmodule OkhValidatorWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
-    # live "/manifests_v1", Manifest_v1Live.Index, :index
+    live "/v1_manifests_validator", V1ManifestValidatorLive.Index, :index
     # live "/manifests_v1/new", Manifest_v1Live.Index, :new
     # live "/manifests_v1/:id/edit", Manifest_v1Live.Index, :edit
 

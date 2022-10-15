@@ -1,5 +1,5 @@
 defmodule Validators.ManifestAuthorValidator do
-  alias ValidationHelpers
+  alias V1ValidationHelpers
 
   def validate_manifest_author(validations, fields) do
     case Map.get(fields, "manifest-author") do
@@ -45,7 +45,7 @@ defmodule Validators.ManifestAuthorValidator do
         Map.merge(manifest_author_validations, %{email: %{status: "not found"}})
       _ ->
         %{"email" => email} = manifest_author
-        Map.merge(manifest_author_validations, %{email: ValidationHelpers.validate_email(email)})
+        Map.merge(manifest_author_validations, %{email: V1ValidationHelpers.validate_email(email)})
     end
   end
 

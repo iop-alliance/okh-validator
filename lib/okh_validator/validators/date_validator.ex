@@ -1,5 +1,5 @@
 defmodule Validators.DateValidator do
-  alias ValidationHelpers
+  alias V1ValidationHelpers
 
   def validate_date(validations, fields, field_list) when is_list(field_list) do
     validations_list = Enum.map(field_list, &(validate_date(validations, fields, &1)))
@@ -12,7 +12,7 @@ defmodule Validators.DateValidator do
         Map.merge(validations, %{field => %{status: "not found"}})
       _ ->
         %{^field => value} = fields
-        Map.merge(validations, ValidationHelpers.validate_date(value, field))
+        Map.merge(validations, V1ValidationHelpers.validate_date(value, field))
     end
   end
 end

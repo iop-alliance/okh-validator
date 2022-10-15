@@ -3,7 +3,7 @@
 # - Rules: Where used, provide at least one email address or social media user handle
 
 defmodule Validators.ContactValidator do
-  alias ValidationHelpers
+  alias V1ValidationHelpers
 
   def validate_contact(validations, fields) do
     case Map.get(fields, "contact") do

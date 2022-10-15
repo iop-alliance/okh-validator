@@ -1,7 +1,7 @@
-defmodule OkhValidatorWeb.ValidationHelpers.Variant do
+defmodule OkhValidatorWeb.V1ValidationHelpers.Variant do
   use Phoenix.HTML
 
-  # alias OkhValidatorWeb.ValidationHelpers.TextField
+  # alias OkhValidatorWeb.V1ValidationHelpers.TextField
 
   def show_validation_result(validatons) do
     show_status(validatons.field_validations["variant-of"])

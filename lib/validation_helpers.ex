@@ -1,4 +1,4 @@
-defmodule ValidationHelpers do
+defmodule V1ValidationHelpers do
   def validate_date(maybe_date, field) do
     case Regex.match?(~r/^\d{4}-\d{2}-\d{2}$/, maybe_date) do
       true ->

@@ -1,7 +1,7 @@
-defmodule OkhValidatorWeb.ValidationHelpers.LinkList do
+defmodule OkhValidatorWeb.V1ValidationHelpers.LinkList do
   use Phoenix.HTML
 
-  # alias OkhValidatorWeb.ValidationHelpers.TextField
+  # alias OkhValidatorWeb.V1ValidationHelpers.TextField
 
   def show_validation_result(field) do
     show_status(field)

@@ -1,7 +1,7 @@
-defmodule OkhValidatorWeb.ValidationHelpers.Contributors do
+defmodule OkhValidatorWeb.V1ValidationHelpers.Contributors do
   use Phoenix.HTML
 
-  # alias OkhValidatorWeb.ValidationHelpers.TextField
+  # alias OkhValidatorWeb.V1ValidationHelpers.TextField
 
   def show_validation_result(validatons) do
     show_status(validatons.field_validations[:contributors])

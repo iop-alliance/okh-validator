@@ -1,7 +1,7 @@
-defmodule OkhValidatorWeb.ValidationHelpers.Contact do
+defmodule OkhValidatorWeb.V1ValidationHelpers.Contact do
   use Phoenix.HTML
 
-  alias OkhValidatorWeb.ValidationHelpers.TextField
+  alias OkhValidatorWeb.V1ValidationHelpers.TextField
 
   def show_validation_result(validatons) do
     show_contact_status(validatons.field_validations["contact"])
