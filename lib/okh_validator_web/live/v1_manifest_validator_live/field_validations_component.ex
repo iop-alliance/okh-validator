@@ -1,7 +1,7 @@
-defmodule OkhValidatorWeb.Live.FieldValidationsComponent do
+defmodule OkhValidatorWeb.V1ManifestValidatorLive.FieldValidationsComponent do
   use OkhValidatorWeb, :live_component
 
-  alias OkhValidatorWeb.ValidationHelpers.{
+  alias OkhValidatorWeb.V1ValidationHelpers.{
     TextField,
     Boolean,
     Contact,

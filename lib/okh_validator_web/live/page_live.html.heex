@@ -1,83 +1,13 @@
 <div class="mt-4">
-    <h3>Open Know-How Manifest Validator</h3>
-    <p>
-        This tool validates the contents of an <a href="https://iop.link/okh" target="_blank">Open Know-How</a> manifest.
-    </p>
-    <div class="mt-4">
-        <p>Enter the URL of the manifest to be validated:</p>
-        <form phx-submit="validate-manifest">
-            <div class="input-group">
-                <input type="text" class="form-control" 
-                    name="manifest_url" value={@manifest_url}
-                    placeholder="Manifest URL"
-                    autofocus autocomplete="on"
-                    readonly={@loading} />
-                <button type="submit" class="btn btn-primary">
-                    Validate
-                </button>
-            </div>
-        </form>
-        <p class="mt-4">
-            For testing the validator, a list of manifest file URLs can be found in the 
-            OKH Search project's repository here: 
-            <br />
-            <a href="https://github.com/iop-alliance/okh-search/blob/search-v2/projects_okhs.csv" target="_blank">
-                https://github.com/iop-alliance/okh-search/blob/search-v2/projects_okhs.csv</a>
-        </p>
-    </div>
-    <div>
-        <%= if @url_validation.status != "ok" do %>
-            <div class="py-3">
-                <%= @url_validation.message %>
-            </div>
-        <% else %>
-            <%= if @yaml_validation.status != "ok" do %>
-                <dt>YAML Format</dt>
-                <dd><%= @yaml_validation.message %></dd>
-            <% else %>
-                <div class="py-3">
-                    <%= live_component OkhValidatorWeb.Live.ManifestValidationComponent, validations: @validations %>               
-                </div>
+    <h1>IOPA Tools</h1>
+    <p>This is a place to access the software tools that are being developed by the IOPA community.</p>
+    
+    <h2>OKH Tools</h2>
+    <ul>
+        <li>
+            <%= live_redirect "OKH v1 Manifest Validator", 
+                to: Routes.v1_manifest_validator_index_path(@socket, :index) %>
+        </li>
+    </ul>
 
-                <div class="py-3">
-                    <%= live_component OkhValidatorWeb.Live.FieldValidationsComponent, validations: @validations %>               
-                </div>
-            <% end %>
-            <div class="mt-4">
-                <p>
-                    You can validate this manifest via the API using the following endpoint:
-                </p>
-                <p>
-                    <%= content_tag(:a, "https://okh-v1-validator.fly.dev/api/validate?manifest=#{@manifest_url}", href: "/api/validate?manifest=#{@manifest_url}") %>
-                </p>
-            </div>
-            <%= if Map.has_key?(@validations, :manifest_validation) && @validations.manifest_validation["status"] == "ok" do %>
-                <form phx-submit="convert-to-oshwa" class="mt-4">
-                    <button type="submit" class="btn btn-primary">
-                        Convert to OSHWA project
-                    </button>
-                </form>
-            <% end %>
-            <div class="mt-4 mb-5">
-                <div class="accordion accordion" id="manifestContent">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Manifest content
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#manifestContent">
-                            <div class="accordion-body">
-                                <pre class="border bg-light p-3">
-                                    <code class="language-yaml">
-                                        <%= html_escape(@manifest_raw_content) %>
-                                    </code>
-                                </pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% end %>
-    </div>
 </div>

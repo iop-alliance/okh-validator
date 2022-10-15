@@ -3,7 +3,7 @@
 # - validate individual contributor fields (https://standards.internetofproduction.org/pub/okh#contributors) and ensure that name is present for each
 
 defmodule Validators.ContributorsValidator do
-  alias ValidationHelpers
+  alias V1ValidationHelpers
 
   def validate_contributors(validations, fields) do
     case Map.get(fields, "contributors") do

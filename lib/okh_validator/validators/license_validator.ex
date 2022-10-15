@@ -1,5 +1,5 @@
 defmodule Validators.LicenseValidator do
-  alias ValidationHelpers
+  alias V1ValidationHelpers
 
   def validate_license(validations, fields) do
     case Map.get(fields, "license") do

@@ -1,7 +1,7 @@
-defmodule OkhValidatorWeb.ValidationHelpers.Derivative do
+defmodule OkhValidatorWeb.V1ValidationHelpers.Derivative do
   use Phoenix.HTML
 
-  # alias OkhValidatorWeb.ValidationHelpers.TextField
+  # alias OkhValidatorWeb.V1ValidationHelpers.TextField
 
   def show_validation_result(validatons) do
     show_status(validatons.field_validations["derivative-of"])

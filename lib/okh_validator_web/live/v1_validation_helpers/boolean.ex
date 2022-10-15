@@ -1,4 +1,4 @@
-defmodule OkhValidatorWeb.ValidationHelpers.Boolean do
+defmodule OkhValidatorWeb.V1ValidationHelpers.Boolean do
   use Phoenix.HTML
 
   def show_validation_result(%{status: "ok"} = field) do

@@ -1,5 +1,5 @@
 defmodule Validators.PersonValidator do
-  alias ValidationHelpers
+  alias V1ValidationHelpers
 
   def validate_person_field(validations, fields, field) do
     case Map.get(fields, field) do
@@ -44,7 +44,7 @@ defmodule Validators.PersonValidator do
   #       Map.merge(person_validations, %{email: {:error, %{value: nil, message: "not found"}}})
   #     _ ->
   #       %{"email" => email} = person
-  #       Map.merge(person_validations, %{email: ValidationHelpers.validate_email(email)})
+  #       Map.merge(person_validations, %{email: V1ValidationHelpers.validate_email(email)})
   #   end
   # end
 end

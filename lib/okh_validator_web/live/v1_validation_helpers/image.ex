@@ -1,4 +1,4 @@
-defmodule OkhValidatorWeb.ValidationHelpers.Image do
+defmodule OkhValidatorWeb.V1ValidationHelpers.Image do
   use Phoenix.HTML
 
   def show_validation_result(%{status: "ok"} = field) do
