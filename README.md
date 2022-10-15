@@ -6,11 +6,11 @@ An overview of the project and details of the validation process is described in
 
 ## Web-based validator
 
-The web-based validator can be accessed at [okh-v1-validator.fly.dev](https://okh-v1-validator.fly.dev)
+The web-based validator can be accessed at [tools.internetofproduction.org](https://tools.internetofproduction.org)
 
 ## API
 
-The endpoint for the REST API is https://okh-v1-validator.fly.dev/validate?manifest=[manifest_url], where [manifest_url] is the url of a manifest that is published online.
+The endpoint for the REST API is https://tools.internetofproduction.org/validate?manifest=[manifest_url\], where \[manifest_url\] is the url of a manifest that is published online.
 
 The API specifications are available at: https://app.swaggerhub.com/apis/iopa/okh-v1-validator/1.0.0
 
