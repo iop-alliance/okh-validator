@@ -21,8 +21,8 @@
             For testing the validator, a list of manifest file URLs can be found in the 
             OKH Search project's repository here: 
             <br />
-            <a href="https://github.com/iop-alliance/okh-search/blob/master/projects_okhs.csv" target="_blank">
-                https://github.com/iop-alliance/okh-search/blob/master/projects_okhs.csv</a>
+            <a href="https://github.com/iop-alliance/okh-search/blob/search-v2/projects_okhs.csv" target="_blank">
+                https://github.com/iop-alliance/okh-search/blob/search-v2/projects_okhs.csv</a>
         </p>
     </div>
     <div>
@@ -57,9 +57,6 @@
                         Convert to OSHWA project
                     </button>
                 </form>
-                <div class="py-3">
-                    <%= live_component OkhValidatorWeb.Live.OshwaProjectComponent, oshwa_project: @oshwa_project %>               
-                </div>
             <% end %>
             <div class="mt-4 mb-5">
                 <div class="accordion accordion" id="manifestContent">
