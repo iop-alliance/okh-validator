@@ -12,7 +12,8 @@ defmodule OkhValidatorWeb.V1ManifestValidatorLive.Index do
       |> initialise_results
       |> assign(
           manifest_url: "",
-          loading: false
+          loading: false,
+          page_title: "OKH v1 Validator"
         )
     {:ok, socket}
   end
